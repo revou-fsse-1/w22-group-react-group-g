@@ -6,8 +6,14 @@ import { motion } from "framer-motion";
 import getScrollAnimation from "../utils/getScrollAnimation";
 import ScrollAnimationWrapper from "./ScrollAnimationWrapper";
 
-const Hero = (
-) => {
+const features = [
+  "Real-time Inventory Tracking",
+  "Intuitive Order Management",
+  "Smart Analytics",
+  "Seamless Integration",
+];
+
+const Hero = () => {
   const scrollAnimation = useMemo(() => getScrollAnimation(), []);
 
   return (
@@ -25,16 +31,34 @@ const Hero = (
               Inventory management made easy for your business needs, with less
               hassle and complexity.
             </p>
+            <ul className="text-black-500 mb-6 ml-8 self-start ">
+              {features.map((feature, index) => (
+                <motion.li
+                  className="mb-6 relative circle-check custom-list"
+                  custom={{ duration: 2 + index }}
+                  variants={scrollAnimation}
+                  key={feature}
+                  whileHover={{
+                    scale: 1.1,
+                    transition: {
+                      duration: 0.2,
+                    },
+                  }}
+                >
+                  {feature}
+                </motion.li>
+              ))}
+            </ul>
             <ButtonPrimary>Get Started</ButtonPrimary>
           </div>
           <div className="flex w-full">
-            <motion.div className="h-full w-full" variants={scrollAnimation}>
+            <motion.div className="h-200 w-200 self-center justify-center" variants={scrollAnimation}>
               <Image
-                src="/assets/Illustration1.png"
-                alt="VPN Illustrasi"
+                src="/assets/boxlogo.png"
+                alt="Feature"
                 quality={100}
-                width={612}
-                height={383}
+                width={200}
+                height={200}
                 layout="responsive"
               />
             </motion.div>
