@@ -7,10 +7,10 @@ import getScrollAnimation from "../utils/getScrollAnimation";
 import ScrollAnimationWrapper from "./ScrollAnimationWrapper";
 
 const features = [
-  "Real-time Inventory Tracking",
-  "Intuitive Order Management",
-  "Smart Analytics",
-  "Seamless Integration",
+  "Real-time Inventory Tracking.",
+  "Intuitive Order Management.",
+  "Smart Analytics.",
+  "Seamless Integration.",
 ];
 
 const Hero = () => {
@@ -20,7 +20,7 @@ const Hero = () => {
     <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto" id="about">
       <ScrollAnimationWrapper>
         <motion.div
-          className="grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-6 sm:py-16"
+          className="grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-2 sm:py-4"
           variants={scrollAnimation}
         >
           <div className=" flex flex-col justify-center items-start row-start-2 sm:row-start-1">
@@ -52,13 +52,13 @@ const Hero = () => {
             <ButtonPrimary>Get Started</ButtonPrimary>
           </div>
           <div className="flex w-full">
-            <motion.div className="h-200 w-200 self-center justify-center" variants={scrollAnimation}>
+            <motion.div className="h-full w-full self-center justify-center" variants={scrollAnimation}>
               <Image
                 src="/assets/boxlogo.png"
                 alt="Feature"
                 quality={100}
-                width={200}
-                height={200}
+                width={1000}
+                height={1000}
                 layout="responsive"
               />
             </motion.div>
