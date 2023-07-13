@@ -1,9 +1,12 @@
 import Header from "@/components/header";
+import Hero from "@/components/hero";
+import Footer from "@/components/footer";
 export default function Home() {
   return (
     <main>
       <Header />
-      <h1>Hello World</h1>
+      <Hero />
+      <Footer />
     </main>
   );
 }

@@ -41,7 +41,7 @@ const Header = () => {
             <path d="M90 21L48 39V90.5L90 73V21Z" fill="#2D3D53" />
           </svg>
 
-          <span className="ml-3 text-xl">Minecrate</span>
+          <span className="ml-3 text-xl">Minicrate</span>
         </a>
         <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
           <LinkScroll
