@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 interface Props {
   children: React.ReactNode;
-  className: string;
 }
 
 const ButtonPrimary: FC<Props> = ({ children }) => (
