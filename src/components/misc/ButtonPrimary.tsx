@@ -1,16 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
+interface Props {
+  children: React.ReactNode;
+}
 
-const ButtonPrimary = ({ children, addClass }) => {
-  return (
-    <button
-      className={
-        "py-3 lg:py-4 px-12 lg:px-16 text-white font-semibold rounded-lg bg-blue-500 hover:shadow-orange-md transition-all outline-none " +
-        addClass
-      }
-    >
-      {children}
-    </button>
-  );
-};
+const ButtonPrimary: FC<Props> = ({ children }) => (
+  <button
+    className={
+      "py-3 lg:py-4 px-12 lg:px-16 text-white font-semibold rounded-lg bg-blue-500 hover:shadow-orange-md transition-all outline-none "
+    }
+  >
+    {children}
+  </button>
+);
 
 export default ButtonPrimary;

@@ -18,7 +18,7 @@ const Hero = () => {
 
   return (
     <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto" id="about">
-      <ScrollAnimationWrapper>
+      <ScrollAnimationWrapper className="">
         <motion.div
           className="grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-2 sm:py-4"
           variants={scrollAnimation}
@@ -52,7 +52,10 @@ const Hero = () => {
             <ButtonPrimary>Get Started</ButtonPrimary>
           </div>
           <div className="flex w-full">
-            <motion.div className="h-full w-full self-center justify-center" variants={scrollAnimation}>
+            <motion.div
+              className="h-full w-full self-center justify-center"
+              variants={scrollAnimation}
+            >
               <Image
                 src="/assets/boxlogo.png"
                 alt="Feature"
