@@ -97,14 +97,16 @@ export default function Login() {
                   />
                 </div>
 
-                <div className="flex flex-col mt-3">
-                  <button
-                    type="submit"
-                    className="px-4 py-3 rounded-lg text-lg font-semibold bg-[#0051CC]"
-                  >
-                    Login
-                  </button>
-                </div>
+                <Link href={"/dashboard"}>
+                  <div className="flex flex-col mt-3">
+                    <button
+                      type="submit"
+                      className="px-4 py-3 rounded-lg text-lg font-semibold bg-[#0051CC]"
+                    >
+                      Login
+                    </button>
+                  </div>
+                </Link>
               </Form>
             )}
           </Formik>

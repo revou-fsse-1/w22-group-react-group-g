@@ -67,15 +67,17 @@ export default function DashboardLayout({
               <h2 className="line-clamp-2">John Doe</h2>
             </div>
 
-            <div className="flex items-center gap-4 px-3 py-3 rounded-md bg-red-600 bg-opacity-20 hover:bg-opacity-60 transition-all">
-              <Image
-                src="/assets/icons/logout.png"
-                alt="logout"
-                width={37}
-                height={37}
-              />
-              <h2>Logout</h2>
-            </div>
+            <Link href={"/"}>
+              <div className="flex items-center gap-4 px-3 py-3 rounded-md bg-red-600 bg-opacity-20 hover:bg-opacity-60 transition-all">
+                <Image
+                  src="/assets/icons/logout.png"
+                  alt="logout"
+                  width={37}
+                  height={37}
+                />
+                <h2>Logout</h2>
+              </div>
+            </Link>
           </div>
         </div>
       </nav>
