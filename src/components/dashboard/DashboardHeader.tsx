@@ -33,7 +33,7 @@ export default function DashboardHeader({ headerTitle }: DashboardHeaderProps) {
         <h1 className="text-xl md:text-3xl">{headerTitle}</h1>
       </div>
 
-      <div className="p-2 opacity-50 text-xs md:p-3 md:text-base hover:opacity-100 transition-all">
+      <div className="hidden p-2 opacity-50 text-xs md:p-3 sm:block md:text-base hover:opacity-100 transition-all">
         <time dateTime={currentDate.toISOString()}>
           {currentDate.toLocaleDateString()}
         </time>
