@@ -1,10 +1,9 @@
 "use client";
 
 import Logo from "@/components/Logo";
-// import DashboardProvider, { DashboardContext } from "@/utils/DashboardProvider";
 import Image from "next/image";
 import Link from "next/link";
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const DashboardContext = createContext({});
 
@@ -27,7 +26,9 @@ export default function DashboardLayout({
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3 mb-5">
                 <Logo width="61" height="55" />
-                <h2 className="text-2xl font-bold text-[#1371FF] hidden md:block">Minicrate</h2>
+                <h2 className="text-2xl font-bold text-[#1371FF] hidden md:block">
+                  Minicrate
+                </h2>
               </div>
 
               <Link href={"/dashboard"}>
