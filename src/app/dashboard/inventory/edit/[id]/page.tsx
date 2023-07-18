@@ -26,8 +26,8 @@ export default function EditInventory({ params }: { params: { id: string } }) {
     price: number().min(0, "Invalid price").required("Price required"),
     stockAmount: number()
       .min(0, "Invalid stock amount")
-      .integer("Number should be integer")
-      .required("Price required"),
+      .integer("Number should be an integer")
+      .required("Stock required"),
   });
   const initialValues: InitialValues = {
     inventoryName: "",
