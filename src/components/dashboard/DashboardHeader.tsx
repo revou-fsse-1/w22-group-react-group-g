@@ -9,10 +9,12 @@ type DashboardContextType = {
 
 type DashboardHeaderProps = {
   headerTitle: string;
-}
+};
 
 export default function DashboardHeader({ headerTitle }: DashboardHeaderProps) {
-  const { displayPanel, setDisplayPanel } = useContext<any | DashboardContextType>(DashboardContext);
+  const { displayPanel, setDisplayPanel } = useContext<
+    any | DashboardContextType
+  >(DashboardContext);
   const currentDate = new Date();
 
   return (
@@ -34,9 +36,7 @@ export default function DashboardHeader({ headerTitle }: DashboardHeaderProps) {
       </div>
 
       <div className="hidden p-2 opacity-50 text-xs md:p-3 sm:block md:text-base hover:opacity-100 transition-all">
-        <time dateTime={currentDate.toISOString()}>
-          {currentDate.toLocaleDateString()}
-        </time>
+        <time>{currentDate.toLocaleDateString()}</time>
       </div>
     </header>
   );

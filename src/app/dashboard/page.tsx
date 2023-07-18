@@ -60,8 +60,16 @@ export default function Dashboard() {
       <DashboardHeader headerTitle="Dashboard" />
       <DashboardQuickActions />
       <DashboardOverview />
-      <DashboardInventoryTable inventoryList={tempInventoryData} />
-      <DashboardTransactionTable transactionList={tempTransactionData} />
+
+      <section className="w-full flex flex-col gap-2">
+        <h2 className="text-xl font-semibold">Recent Inventories</h2>
+        <DashboardInventoryTable inventoryList={tempInventoryData} />
+      </section>
+
+      <section className="w-full flex flex-col gap-2">
+        <h2 className="text-xl font-semibold">Recent Transactions</h2>
+        <DashboardTransactionTable transactionList={tempTransactionData} />
+      </section>
     </main>
   );
 }
