@@ -1,41 +1,45 @@
 "use client";
 import React, { useMemo } from "react";
 import Image from "next/image";
-import ButtonPrimary from "./misc/ButtonPrimary";
+import Logo from "@/components/Logo";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import getScrollAnimation from "../utils/getScrollAnimation";
 import ScrollAnimationWrapper from "./ScrollAnimationWrapper";
 
-const features = [
-  "Real-time Inventory Tracking.",
-  "Intuitive Order Management.",
-  "Smart Analytics.",
-  "Seamless Integration.",
+const featureList = [
+  "Inventory & Transaction Tracking",
+  "Simple & Intuitive Dashboard",
+  "Eye-friendly UI",
+  "FREE!*",
 ];
 
 const Hero = () => {
   const scrollAnimation = useMemo(() => getScrollAnimation(), []);
 
   return (
-    <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto" id="about">
-      <ScrollAnimationWrapper className="">
-        <motion.div
-          className="grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-2 sm:py-4"
-          variants={scrollAnimation}
-        >
-          <div className=" flex flex-col justify-center items-start row-start-2 sm:row-start-1">
-            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-medium text-black-600 leading-normal">
-              <strong>Minicrate</strong>: Inventory Management Simplified.
+    <ScrollAnimationWrapper className="">
+      <motion.div className="" variants={scrollAnimation}>
+        <main className="flex flex-col gap-11 md:flex-row-reverse">
+          <div className="w-full flex items-center justify-center">
+            <Logo width="278" height="272" />
+          </div>
+
+          <div className="flex flex-col gap-9">
+            <h1 className="text-4xl font-bold md:text-5xl xl:text-6xl">
+              Inventory Management In Simple Form
             </h1>
-            <p className="text-black-500 mt-4 mb-6">
-              Inventory management made easy for your business needs, with less
-              hassle and complexity.
+
+            <p className="md:text-lg xl:text-xl">
+              Keep track of all your products and transactions for your business
+              needs, with less hassle and complexity
             </p>
-            <ul className="text-black-500 mb-6 ml-8 self-start ">
-              {features.map((feature, index) => (
+
+            <ul className="flex flex-col gap-3 font-semibold md:text-lg xl:text-xl">
+              {featureList.map((feature, i) => (
                 <motion.li
-                  className="mb-6 relative circle-check custom-list"
-                  custom={{ duration: 2 + index }}
+                  className="flex gap-3 items-center"
+                  custom={{ duration: 1 + i }}
                   variants={scrollAnimation}
                   key={feature}
                   whileHover={{
@@ -45,30 +49,26 @@ const Hero = () => {
                     },
                   }}
                 >
+                  <Image
+                    src="/assets/icons/avatar.png"
+                    alt={`feature ${i + 1}`}
+                    width={28}
+                    height={28}
+                  />
                   {feature}
                 </motion.li>
               ))}
             </ul>
-            <ButtonPrimary>Get Started</ButtonPrimary>
+
+            <Link href={"/signup"}>
+              <button className="w-full px-5 py-4 rounded-lg font-semibold bg-[#0051CC] bg-opacity-60 md:w-3/5 md:text-lg xl:text-xl hover:bg-opacity-100 transition-all">
+                Get Started
+              </button>
+            </Link>
           </div>
-          <div className="flex w-full">
-            <motion.div
-              className="h-full w-full self-center justify-center"
-              variants={scrollAnimation}
-            >
-              <Image
-                src="/assets/boxlogo.png"
-                alt="Feature"
-                quality={100}
-                width={1000}
-                height={1000}
-                layout="responsive"
-              />
-            </motion.div>
-          </div>
-        </motion.div>
-      </ScrollAnimationWrapper>
-    </div>
+        </main>
+      </motion.div>
+    </ScrollAnimationWrapper>
   );
 };
 
