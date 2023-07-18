@@ -43,7 +43,7 @@ export default function DashboardLayout({
                 </div>
               </Link>
 
-              <Link href={"/inventory"}>
+              <Link href={"/dashboard/inventory"}>
                 <div className="flex items-center gap-4 px-3 py-3 rounded-md hover:bg-[#222E3F] hover:bg-opacity-40 active:bg-opacity-80 transition-all duration-200">
                   <Image
                     src="/assets/icons/inventory.png"
@@ -55,7 +55,7 @@ export default function DashboardLayout({
                 </div>
               </Link>
 
-              <Link href={"/transaction"}>
+              <Link href={"/dashboard/transaction"}>
                 <div className="flex items-center gap-4 px-3 py-3 rounded-md hover:bg-[#222E3F] hover:bg-opacity-40 active:bg-opacity-80 transition-all duration-200">
                   <Image
                     src="/assets/icons/transaction.png"
