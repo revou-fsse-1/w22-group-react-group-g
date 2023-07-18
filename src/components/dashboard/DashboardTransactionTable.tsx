@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type DashboardTransactionTableProps = {
   transactionList: {
@@ -40,31 +41,28 @@ export default function DashboardTransactionTable({
               className="text-sm text-gray-100 border-b border-b-[#222E3F] sm:text-base"
             >
               <td className="px-3 py-2 text-center">{transaction.orderId}</td>
-              <td className="px-3 py-2 text-center">
-                {transaction.orderUsername}
-              </td>
-              <td className="px-3 pt-2 text-center line-clamp-2">
-                {transaction.inventoryName}
-              </td>
+              <td className="px-3 py-2 text-center">{transaction.orderUsername}</td>
+              <td className="px-3 pt-2 text-center line-clamp-2">{transaction.inventoryName}</td>
               <td className="px-3 py-2 text-center">{transaction.amount}</td>
               <td className="px-3 py-2 text-center">
                 452.000 {/* should get price from db & calculate price */}
               </td>
-              <td className="px-3 py-2 text-center">
-                {transaction.orderStatus}
-              </td>
+              <td className="px-3 py-2 text-center">{transaction.orderStatus}</td>
               <td className="px-3 py-2 text-center">{transaction.orderDate}</td>
               <td className="px-3 py-2 text-center">{transaction.updatedAt}</td>
               <td className="px-3 py-2 text-xl text-center">
                 <div className="min-w-max flex justify-center gap-3">
-                  <button className="min-w-fit h-fit p-2 rounded-md bg-orange-500 bg-opacity-40 hover:bg-opacity-80 transition-all">
-                    <Image
-                      src="/assets/icons/edit.png"
-                      alt="edit"
-                      width={30}
-                      height={30}
-                    />
-                  </button>
+                  <Link href={`/dashboard/transaction/edit/${transaction.orderId}`}>
+                    <button className="min-w-fit h-fit p-2 rounded-md bg-orange-500 bg-opacity-40 hover:bg-opacity-80 transition-all">
+                      <Image
+                        src="/assets/icons/edit.png"
+                        alt="edit"
+                        width={30}
+                        height={30}
+                      />
+                    </button>
+                  </Link>
+
                   <button className="min-w-fit h-fit p-2 rounded-md bg-rose-600 bg-opacity-40 hover:bg-opacity-80 transition-all">
                     <Image
                       src="/assets/icons/delete.png"

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type DashboardInventoryTableProps = {
   inventoryList: {
@@ -47,14 +48,17 @@ export default function DashboardInventoryTable({
               <td className="px-3 py-2 text-center">{inventory.updatedAt}</td>
               <td className="px-3 py-2 text-xl text-center">
                 <div className="min-w-max flex justify-center gap-3">
-                  <button className="min-w-fit h-fit p-2 rounded-md bg-orange-500 bg-opacity-40 hover:bg-opacity-80 transition-all">
-                    <Image
-                      src="/assets/icons/edit.png"
-                      alt="edit"
-                      width={30}
-                      height={30}
-                    />
-                  </button>
+                  <Link href={`/dashboard/inventory/edit/${inventory.inventoryId}`}>
+                    <button className="min-w-fit h-fit p-2 rounded-md bg-orange-500 bg-opacity-40 hover:bg-opacity-80 transition-all">
+                      <Image
+                        src="/assets/icons/edit.png"
+                        alt="edit"
+                        width={30}
+                        height={30}
+                      />
+                    </button>
+                  </Link>
+                  
                   <button className="min-w-fit h-fit p-2 rounded-md bg-rose-600 bg-opacity-40 hover:bg-opacity-80 transition-all">
                     <Image
                       src="/assets/icons/delete.png"
