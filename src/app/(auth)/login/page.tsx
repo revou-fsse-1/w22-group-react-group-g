@@ -39,6 +39,9 @@ export default function Login() {
         }
       );
       console.log(response);
+      const data = response.data;
+      localStorage.setItem('token', data.accessToken);
+      router.push('/dashboard');
     } catch (error: any) {
       console.log(error.response.data.errors);
     }
