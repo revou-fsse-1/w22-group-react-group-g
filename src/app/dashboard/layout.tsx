@@ -4,6 +4,10 @@ import Logo from "@/components/Logo";
 import Image from "next/image";
 import Link from "next/link";
 import { createContext, useState } from "react";
+import { useRouter } from "next/navigation";
+import useSWR from "swr";
+import { API_MY_ACCOUNT } from "@/utils/ApiLinks";
+import axios from "axios";
 
 export const DashboardContext = createContext({});
 
@@ -12,7 +16,28 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   const [displayPanel, setDisplayPanel] = useState<boolean>(true);
+
+  // Fetch handler
+  const fetcher = (url: string) =>
+    axios
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((data) => {
+        console.log(data.data);
+        return data.data;
+      });
+  const { data, isLoading } = useSWR(API_MY_ACCOUNT, fetcher);
+
+  // Logout handler
+  const logoutUser = () => {
+    localStorage.removeItem("token");
+    router.push("/");
+  };
 
   return (
     <DashboardContext.Provider value={{ displayPanel, setDisplayPanel }}>
@@ -78,20 +103,23 @@ export default function DashboardLayout({
                   width={37}
                   height={37}
                 />
-                <h2 className="line-clamp-2 hidden md:block">John Doe</h2>
+                <h2 className="line-clamp-2 hidden md:block">
+                  {isLoading ? "..." : data.username}
+                </h2>
               </div>
 
-              <Link href={"/"}>
-                <div className="flex items-center gap-4 px-3 py-3 rounded-md bg-red-600 bg-opacity-20 hover:bg-opacity-60 transition-all">
-                  <Image
-                    src="/assets/icons/logout.png"
-                    alt="logout"
-                    width={37}
-                    height={37}
-                  />
-                  <h2 className="hidden md:block">Logout</h2>
-                </div>
-              </Link>
+              <button
+                onClick={() => logoutUser()}
+                className="flex items-center gap-4 px-3 py-3 rounded-md bg-red-600 bg-opacity-20 hover:bg-opacity-60 transition-all"
+              >
+                <Image
+                  src="/assets/icons/logout.png"
+                  alt="logout"
+                  width={37}
+                  height={37}
+                />
+                <h2 className="hidden md:block">Logout</h2>
+              </button>
             </div>
           </div>
         </nav>
