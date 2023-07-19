@@ -6,7 +6,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { object, string } from "yup";
 import axios from "axios";
 
-
 type InitialSignupValues = {
   username: string;
   email: string;
@@ -44,15 +43,13 @@ export default function Signup() {
           email: values.email,
           password: values.password,
         }
-      ); 
+      );
       console.log(response);
+      router.push("/login");
     } catch (error: any) {
       console.log(error.response.data.errors);
     }
-
   };
-  
-
 
   return (
     <>

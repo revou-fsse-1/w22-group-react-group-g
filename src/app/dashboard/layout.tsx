@@ -4,6 +4,7 @@ import Logo from "@/components/Logo";
 import Image from "next/image";
 import Link from "next/link";
 import { createContext, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const DashboardContext = createContext({});
 
@@ -12,6 +13,14 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
+  if (!!localStorage.getItem("token")) {
+    console.log("Protected function executed successfully!");
+  } else {
+    console.log("Token not found. Redirecting to the landingpage...");
+    router.push("/login");
+  }
   const [displayPanel, setDisplayPanel] = useState<boolean>(true);
 
   return (
