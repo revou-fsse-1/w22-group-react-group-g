@@ -3,7 +3,7 @@
 import Logo from "@/components/Logo";
 import Image from "next/image";
 import Link from "next/link";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { API_MY_ACCOUNT } from "@/utils/ApiLinks";
@@ -17,15 +17,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  
-  // Checks token
-  if (!!localStorage.getItem("token")) {
-    console.log("Protected function executed successfully!");
-  } else {
-    console.log("Token not found. Redirecting to the landingpage...");
-    router.push("/login");
-  }
-  
+
   // Context states
   const [displayPanel, setDisplayPanel] = useState<boolean>(true);
   const [userInventory, setUserInventory] = useState();
@@ -43,6 +35,9 @@ export default function DashboardLayout({
         setUserInventory(data.data.inventory);
         setUserTransaction(data.data.transaction);
         return data.data;
+      })
+      .catch((error) => {
+        throw new Error("Failed fetching user data");
       });
   const { data, isLoading } = useSWR(API_MY_ACCOUNT, fetcher);
 
@@ -51,6 +46,12 @@ export default function DashboardLayout({
     localStorage.removeItem("token");
     router.push("/");
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      router.push("/login");
+    }
+  }, []);
 
   return (
     <DashboardContext.Provider
@@ -119,7 +120,11 @@ export default function DashboardLayout({
                   height={37}
                 />
                 <h2 className="line-clamp-2 hidden md:block">
-                  {isLoading ? "..." : data.username}
+                  {isLoading
+                    ? "..."
+                    : data == undefined
+                    ? "-ERROR-"
+                    : data.username}
                 </h2>
               </div>
 
