@@ -40,7 +40,17 @@ export default function AddInventory() {
 
   // Form submit handler
   const handleSubmit = async (values: InitialValues) => {
-    console.log(values);
+    try {
+      const response = await axios.post(API_INVENTORY, values, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      router.push("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
