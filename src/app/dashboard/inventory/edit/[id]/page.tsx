@@ -65,27 +65,23 @@ export default function EditInventory({ params }: { params: { id: string } }) {
       router.refresh();
       router.back();
     } catch (error) {
-      console.log(error);
+      throw new Error("Failed deleting transaction");
     }
   };
 
   // Form submit handler
   const handleSubmit = async (values: InitialValues) => {
     try {
-      const res = await axios.patch(
-        `${API_INVENTORY}/${params.id}`,
-        values,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const res = await axios.patch(`${API_INVENTORY}/${params.id}`, values, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
       router.refresh();
       router.back();
     } catch (error) {
-      console.log(error);
+      throw new Error("Failed updating inventory");
     }
   };
 
