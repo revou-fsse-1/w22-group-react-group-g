@@ -17,7 +17,15 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-
+  
+  // Checks token
+  if (!!localStorage.getItem("token")) {
+    console.log("Protected function executed successfully!");
+  } else {
+    console.log("Token not found. Redirecting to the landingpage...");
+    router.push("/login");
+  }
+  
   // Context states
   const [displayPanel, setDisplayPanel] = useState<boolean>(true);
   const [userInventory, setUserInventory] = useState();
