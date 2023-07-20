@@ -17,7 +17,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
+
+  // Context states
   const [displayPanel, setDisplayPanel] = useState<boolean>(true);
+  const [userInventory, setUserInventory] = useState();
+  const [userTransaction, setUserTransaction] = useState();
 
   // Fetch handler
   const fetcher = (url: string) =>
@@ -28,7 +32,8 @@ export default function DashboardLayout({
         },
       })
       .then((data) => {
-        console.log(data.data);
+        setUserInventory(data.data.inventory);
+        setUserTransaction(data.data.transaction);
         return data.data;
       });
   const { data, isLoading } = useSWR(API_MY_ACCOUNT, fetcher);
@@ -40,7 +45,9 @@ export default function DashboardLayout({
   };
 
   return (
-    <DashboardContext.Provider value={{ displayPanel, setDisplayPanel }}>
+    <DashboardContext.Provider
+      value={{ displayPanel, setDisplayPanel, userInventory, userTransaction }}
+    >
       <div className="min-h-screen flex">
         <nav
           className={`w-fit min-w-fit max-w-sm ${
