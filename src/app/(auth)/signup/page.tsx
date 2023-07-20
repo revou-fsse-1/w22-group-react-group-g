@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { object, string } from "yup";
 import axios from "axios";
+import { API_REGISTER } from "@/utils/ApiLinks";
 
 type InitialSignupValues = {
   username: string;
@@ -36,18 +37,11 @@ export default function Signup() {
     console.log("form submitted with values:");
     console.log(values);
     try {
-      const response = await axios.post(
-        "https://minicrateapi.up.railway.app/api/auth/register",
-        {
-          username: values.username,
-          email: values.email,
-          password: values.password,
-        }
-      );
-      console.log(response);
+      const response = await axios.post(API_REGISTER, values);
+
       router.push("/login");
-    } catch (error: any) {
-      console.log(error.response.data.errors);
+    } catch (error) {
+      console.log(error);
     }
   };
 
