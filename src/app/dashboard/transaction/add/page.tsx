@@ -7,7 +7,7 @@ import { object, string, number } from "yup";
 import { useRouter } from "next/navigation";
 import { API_INVENTORY, API_TRANSACTION } from "@/utils/ApiLinks";
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DashboardContext } from "@/app/dashboard/layout";
 
 type InitialValues = {
@@ -77,9 +77,19 @@ export default function AddTransaction() {
       router.refresh();
       router.push("/dashboard");
     } catch (error) {
-      console.log(error);
+      throw new Error("Failed creating transaction");
     }
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      throw new Error("MISSING TOKEN");
+    }
+
+    if (!userInventory) {
+      throw new Error("userInventory is undefined");
+    }
+  }, []);
 
   return (
     <main className="w-full max-h-screen overflow-y-auto flex flex-col p-4 gap-4 text-gray-100 bg-[#19222E]">

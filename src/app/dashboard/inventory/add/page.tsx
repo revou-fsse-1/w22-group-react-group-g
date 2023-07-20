@@ -7,6 +7,7 @@ import { object, string, number } from "yup";
 import { useRouter } from "next/navigation";
 import { API_INVENTORY } from "@/utils/ApiLinks";
 import axios from "axios";
+import { useEffect } from "react";
 
 type InitialValues = {
   inventoryName: string;
@@ -26,7 +27,7 @@ export default function AddInventory() {
     category: string().required("Category required"),
     price: number().min(0, "Invalid price").required("Price required"),
     stockAmount: number()
-      .min(0, "Invalid stock amount")
+      .min(1, "Invalid stock amount")
       .integer("Number should be an integer")
       .required("Stock required"),
   });
@@ -49,9 +50,15 @@ export default function AddInventory() {
 
       router.push("/dashboard");
     } catch (error) {
-      console.log(error);
+      throw new Error("Failed creating inventory");
     }
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      throw new Error("MISSING TOKEN");
+    }
+  }, []);
 
   return (
     <main className="w-full max-h-screen overflow-y-auto flex flex-col p-4 gap-4 text-gray-100 bg-[#19222E]">
@@ -60,7 +67,6 @@ export default function AddInventory() {
         initialValues={initialValues}
         validationSchema={inventorySchema}
         onSubmit={(values) => handleSubmit(values)}
-        validateOnChange={false}
       >
         <Form className="w-full flex flex-col p-4 gap-4 rounded-md bg-[#0E141A]">
           <div className="w-full flex flex-col gap-2 sm:w-4/5 lg:w-3/5 xl:w-2/5">

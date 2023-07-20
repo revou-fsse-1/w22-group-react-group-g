@@ -37,6 +37,9 @@ export default function EditTransaction({
       })
       .then((data) => {
         return data.data;
+      })
+      .catch((error) => {
+        throw new Error(`Failed fetching data with url: ${url}`);
       });
   const { data, isLoading } = useSWR(
     `${API_TRANSACTION}/${params.id}`,
@@ -106,7 +109,7 @@ export default function EditTransaction({
       router.refresh();
       router.back();
     } catch (error) {
-      console.log(error);
+      throw new Error("Failed deleting transaction");
     }
   };
 
@@ -145,7 +148,7 @@ export default function EditTransaction({
       router.refresh();
       router.back();
     } catch (error) {
-      console.log(error);
+      throw new Error("Failed updating transaction");
     }
   };
 
