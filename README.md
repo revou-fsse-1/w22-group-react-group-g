@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Group G Project - Minicrate
 
-## Getting Started
+![banner](./md/banner.png)
 
-First, run the development server:
+## 👋 Greetings! 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Are you running a small business and got some products that you need to manage? Or even a list of transactions that you need to keep track of? And you don't need the complexity of a huge e-commerce system?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Minicrate aims to make your inventory management easy and keep the process relatively simple. Simply create to your account and start adding your list of things to keep track of.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔗 Link to Website
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### [https://minicrate-project.vercel.app/](https://minicrate-project.vercel.app/)
 
-## Learn More
+## 🤝 Team
 
-To learn more about Next.js, take a look at the following resources:
+| Name            |          Main Role |
+| :-------------- | -----------------: |
+| Derian Melvin   |   Frontend UI & UX |
+| Ichsan Zulfikar | Frontend & Backend |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Tools & Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Front-end
+[![backend tools](https://skillicons.dev/icons?i=typescript,react,nextjs,tailwind,figma)](https://skillicons.dev)
 
-## Deploy on Vercel
+### Back-end
+[![backend tools](https://skillicons.dev/icons?i=typescript,nestjs,prisma,postgres)](https://skillicons.dev)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Others
+[![backend tools](https://skillicons.dev/icons?i=vscode,git,github,stackoverflow)](https://skillicons.dev)
