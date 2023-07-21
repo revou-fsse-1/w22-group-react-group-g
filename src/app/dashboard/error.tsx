@@ -16,11 +16,6 @@ export default function Error({
 
   const router = useRouter();
 
-  const handleRedirect = () => {
-    localStorage.removeItem("token");
-    router.push("/login");
-  };
-
   return (
     <main className="w-full max-h-screen overflow-y-auto flex flex-col p-4 gap-4 text-gray-100 bg-[#19222E]">
       <section className="w-full h-full flex flex-col justify-center px-4 py-3 gap-4 rounded-md bg-[#0E141A]">
@@ -42,12 +37,12 @@ export default function Error({
               There seems to be a problem when accessing your data. Please try
               again!
             </span>
-            <button
-              onClick={() => handleRedirect()}
+            <a
+              href="/login"
               className="px-4 py-3 rounded-lg bg-[#0051CC] bg-opacity-50 hover:bg-opacity-100 sm:text-lg transition-all"
             >
               Return to Login
-            </button>
+            </a>
           </div>
         </div>
       </section>
