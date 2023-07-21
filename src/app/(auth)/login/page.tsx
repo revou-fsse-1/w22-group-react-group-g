@@ -6,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { object, string } from "yup";
 import axios from "axios";
 import { API_LOGIN } from "@/utils/ApiLinks";
+import Logo from "@/components/Logo";
 
 type InitialLoginValues = {
   email: string;
@@ -44,7 +45,8 @@ export default function Login() {
       <header className="flex flex-col items-center px-5 py-5 pb-16 bg-[#0E141A]">
         <Link href={"/"}>
           <div className="flex items-center gap-4">
-            <h1 className="text-3xl text-gray-100 font-semibold">Minicrate</h1>
+            <Logo width="64" height="58" />
+            <h1 className="text-3xl text-[#1371FF] font-bold">Minicrate</h1>
           </div>
         </Link>
       </header>

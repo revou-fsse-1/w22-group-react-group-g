@@ -65,12 +65,14 @@ export default function DashboardLayout({
         >
           <div className="min-w-fit w-full max-w-[15rem] h-full flex flex-col gap-4 justify-between">
             <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 mb-5">
-                <Logo width="61" height="55" />
-                <h2 className="text-2xl font-bold text-[#1371FF] hidden md:block">
-                  Minicrate
-                </h2>
-              </div>
+              <Link href={"/dashboard"}>
+                <div className="flex items-center gap-3 mb-5">
+                  <Logo width="61" height="55" />
+                  <h2 className="text-2xl font-bold text-[#1371FF] hidden md:block">
+                    Minicrate
+                  </h2>
+                </div>
+              </Link>
 
               <Link href={"/dashboard"}>
                 <div className="flex items-center gap-4 px-3 py-3 rounded-md hover:bg-[#222E3F] hover:bg-opacity-40 active:bg-opacity-80 transition-all duration-200">

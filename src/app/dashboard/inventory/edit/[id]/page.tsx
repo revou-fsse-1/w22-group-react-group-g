@@ -89,7 +89,9 @@ export default function EditInventory({ params }: { params: { id: string } }) {
     <main className="w-full max-h-screen overflow-y-auto flex flex-col p-4 gap-4 text-gray-100 bg-[#19222E]">
       <DashboardHeader headerTitle="Edit Inventory" />
       {isLoading ? (
-        <span>Loading...</span>
+        <div className="w-full flex flex-col p-4 gap-4 rounded-md bg-[#0E141A]">
+          <span className="text-lg">Loading...</span>
+        </div>
       ) : (
         <Formik
           initialValues={initialValues}

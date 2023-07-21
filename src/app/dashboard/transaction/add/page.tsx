@@ -85,10 +85,6 @@ export default function AddTransaction() {
     if (!localStorage.getItem("token")) {
       throw new Error("MISSING TOKEN");
     }
-
-    if (!userInventory) {
-      throw new Error("userInventory is undefined");
-    }
   }, []);
 
   return (
